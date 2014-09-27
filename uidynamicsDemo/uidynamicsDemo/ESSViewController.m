@@ -65,33 +65,33 @@
     [_animator addBehavior:gravity];
 	// Do any additional setup after loading the view, typically from a nib.
 }
-//- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *theTouch = [touches anyObject];
-//    
-//    _currentLocation = [theTouch locationInView:self.view];
-//    
-//    UIOffset offset = UIOffsetMake(20, 20);
-//    
-//    _attachment = [[UIAttachmentBehavior alloc]
-//                   initWithItem:_blueBoxView
-//                   offsetFromCenter:offset
-//                   attachedToAnchor:_currentLocation];
-//    
-//    [_animator addBehavior:_attachment];
-//}
-//
-//- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *theTouch = [touches anyObject];
-//    _currentLocation = [theTouch locationInView:self.view];
-//    _attachment.anchorPoint = _currentLocation;
-//}
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *theTouch = [touches anyObject];
+    
+    _currentLocation = [theTouch locationInView:self.view];
+    
+    UIOffset offset = UIOffsetMake(20, 20);
+    
+    _attachment = [[UIAttachmentBehavior alloc]
+                   initWithItem:_blueBoxView
+                   offsetFromCenter:offset
+                   attachedToAnchor:_currentLocation];
+    
+    [_animator addBehavior:_attachment];
+}
 
-//- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [_animator removeBehavior:_attachment];
-//}
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *theTouch = [touches anyObject];
+    _currentLocation = [theTouch locationInView:self.view];
+    _attachment.anchorPoint = _currentLocation;
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_animator removeBehavior:_attachment];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
